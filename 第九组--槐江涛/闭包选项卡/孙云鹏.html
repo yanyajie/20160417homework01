@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        #div1{
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            margin:0;
+
+            width: 500px;
+            height: 10px;
+            cursor: pointer;
+        }
+        ul li{
+            list-style: none;
+
+
+        }
+        #box{
+            margin: 10px auto;
+            width: 850px;
+        }
+        #box ul{
+            position:relative;
+            top: 1px;
+            overflow:hidden;
+        }
+        #box ul li{
+            float: left;
+            margin-right: 10px;
+            width: 200px;
+            height: 100px;
+            background:antiquewhite;
+            line-height: 30px;
+            text-align: center;
+            border: 1px solid red ;
+            border-bottom: lightgreen ;
+            cursor: pointer;
+        }
+
+        #box ul li.select {
+            background: lightgreen;
+            border-bottom: 1px solid lightgreen;
+        }
+
+        #box div {
+            display: none;
+            height: 300px;
+            line-height: 30px;
+            text-align: center;
+            border: 1px solid red;
+            background:lightgreen;
+        }
+
+
+        #box div.select {
+            display: block;
+            background:lightgreen;
+        }
+
+    </style>
+</head>
+<body>
+<div id="box">
+    <ul>
+        <li class="select">1</li>
+        <li>2</li>
+        <li>3</li>
+    </ul>
+    <div class="select">a</div>
+    <div>b</div>
+    <div>c</div>
+
+</div>
+<script>
+
+    var box=document.getElementById("box")
+    var oLis=box.getElementsByTagName("li")
+    var oDiv=box.getElementsByTagName("div")
+
+    function tabChange(n){
+        for(var i=0;i<oLis.length;i++){
+            oLis[i].className=null;
+            oDiv[i].className=null;
+        }
+        oLis[n].className="select";
+        oDiv[n].className="select";
+
+    }
+    function fn(i){  oLis[i].onclick = function () {
+        alert (i)
+        tabChange(i)
+
+    }}
+    var n=(function x() {
+         for (var i = 0; i < oLis.length; i++) {
+
+            fn(i)
+
+         }
+     })()
+
+
+</script>
+</body>
+</html>
