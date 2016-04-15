@@ -65,26 +65,16 @@
     var divs=document.getElementById("box").getElementsByTagName("div");
 
 
-//    function tab(index){
-//        for(var i=0;i<lis.length;i++){
-//            lis[i].className="";
-//            divs[i].className="";
-//        }
-//        lis[index].className="on";
-//        divs[index].className="on";
-//    }
-    for(var i=0;i<lis.length;i++){
-    (function  (){
-        lis[i].onclick=function (i){
-
-                lis[i].className="";
-                divs[i].className="";
-            }
-            lis[i].className="on";
-            divs[i].className="on";}
+    function tab(index){
+        for(var i=0;i<lis.length;i++){
+            lis[i].className="";
+            divs[i].className="";
         }
-    (i);
+        lis[index].className="on";
+        divs[index].className="on";
     }
+
+
     // 1.
     //        for(var i=0;i<lis.length;i++){
     //            (function (i){
@@ -95,14 +85,14 @@
     //        }
 
     //2.
-//    for(var i=0;i<lis.length;i++){
-//        lis[i].onclick=(function(){
-//            var x=i;
-//            return function(){
-//                tab(x);
-//            }
-//        })();
-//    }
+    for(var i=0;i<lis.length;i++){
+        lis[i].onclick=(function(){
+            var x=i;
+            return function(){
+                tab(x);
+            }
+        })();
+    }
 
 </script>
 </body>
