@@ -1,0 +1,62 @@
+<html>
+<head>
+    <title>choice</title>
+    <meta charset = "utf-8">
+    <style type="text/css">
+        html,body,div,ul,li{margin: 0;padding: 0;}
+        #tab{height: 300px;width: 500px;border: 1px solid red;left: 50%;top: 50%;position: absolute;margin-top: -160px;margin-left: -260px;padding: 10px;}
+        ul{}
+        li{list-style: none;height: 30px;width: 100px;border: 1px solid orange;float: left;margin-right: 10px;line-height: 30px;text-align: center;cursor: pointer;}
+        li.select{background: -webkit-linear-gradient(top left,red,yellow, pink);}
+        #tab div{height: 100px;width: 324px;border: 1px solid orange;clear: both;text-align: center;line-height: 100px;display: none;}
+        #tab div.select{display: block;}
+        #tab li{border-bottom: none;}
+    </style>
+</head>
+<body>
+<div id = "tab">
+    <ul>
+        <li class="select">音乐</li>
+        <li>视频</li>
+        <li>咨询</li>
+    </ul>
+    <div class = "select">音乐内容</div>
+    <div>视频内容</div>
+    <div>咨询内容</div>
+</div>
+</body>
+<script type="text/javascript">
+  /*  var tab  = document.getElementById("tab"),
+            lis  = tab.getElementsByTagName('li'),
+            divs = tab.getElementsByTagName('div');
+
+    for (var i = 0; i < lis.length; i++) {
+        lis[i].selfIndexName = i;
+        lis[i].onmouseover = function(){
+            for (var j = 0; j < divs.length; j++) {
+                lis[j].className = "";
+                divs[j].className = "";
+            };
+            this.className = 'select';
+            divs[this.selfIndexName].className ='select';
+        }
+    };*/
+  var tab  = document.getElementById("tab"),
+          lis  = tab.getElementsByTagName('li'),
+          divs = tab.getElementsByTagName('div');
+
+  for (var i = 0; i < lis.length; i++) {
+      (function (i) {
+          lis[i].onmouseover = function(){
+              for(var j = 0;j < divs.length;j++ ){
+                  lis[j].className = "";
+                  divs[j].className = "";
+              }
+              lis[i].className = "select";
+              divs[i].className = "select";
+          }
+      })(i);
+  };
+
+</script>
+</html>

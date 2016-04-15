@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            font-size: 16px;
+        }
+        ul,li{
+            list-style: none;
+        }
+        #tab{
+            margin: 10px auto;
+            width: 500px;
+        }
+        #tab ul{
+            position: relative;
+            top: 1px;
+        }
+        #tab ul li{
+            float: left;
+            margin-right: 5px;
+            width: 100px;
+            height: 30px;
+            line-height: 30px;
+            text-align: center;
+            border: 1px solid #ccc;
+            cursor: pointer;
+        }
+        #tab ul li.select{
+            background: red;
+        }
+        #tab div{
+            display: none;
+            clear: both;
+            height: 300px;
+            line-height: 300px;
+            text-align:center;
+            border: 1px solid #ccc;
+        }
+        #tab div.select{
+            display: block;
+        }
+    </style>
+</head>
+<body>
+<div id="tab">
+    <ul>
+        <li class="select">北京</li>
+        <li>上海</li>
+        <li>广州</li>
+    </ul>
+    <div class="select">北京</div>
+    <div>上海</div>
+    <div>广州</div>
+</div>
+<script>
+    var oTab=document.getElementById('tab');
+    var oLis=oTab.getElementsByTagName('li');
+    var oDiv=oTab.getElementsByTagName('div');
+    function tabchange(n){
+        for(var i=0;i<oLis.length;i++){
+            oLis[i].className="";
+            oDiv[i].className="";
+        }
+        oLis[n].className="select";
+        oDiv[n].className="select";
+    }
+    for(var j=0;j<oLis.length;j++){
+        !function(j){
+            oLis[j].onmouseover = function(){
+                tabchange(j);
+            }
+        }(j);
+    }
+</script>
+
+</body>
+</html>
