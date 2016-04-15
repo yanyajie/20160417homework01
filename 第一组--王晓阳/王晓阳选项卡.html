@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>1.选项卡总结</title>
+    <style type="text/css">
+        body,div,ul,li{
+            margin: 0;
+            padding: 0;
+        }
+        ul,li{
+            list-style: none;
+        }
+        .myTab{
+            margin: 100px auto 0;
+            width: 300px;
+            height: 350px;
+            border: 1px solid #cccccc;
+        }
+        .myTab ul li{
+            float: left;
+            width: 100px;
+            height: 50px;
+            font-size: 18px;
+            line-height: 50px;
+            text-align: center;
+        }
+        .myTab ul .active{
+            background: deeppink;
+        }
+        .myTab div{
+            display: none;
+            clear: both;
+            width: 300px;
+            height: 300px;
+            font-size: 50px;
+            line-height: 300px;
+            text-align: center;
+        }
+        .myTab .active{
+            display: block;
+            background: deepskyblue;
+        }
+    </style>
+</head>
+<body>
+
+<div id="tab" class="myTab">
+    <ul>
+        <li class="active">选项卡1</li>
+        <li>选项卡2</li>
+        <li>选项卡3</li>
+    </ul>
+    <div class="active">内容1    </div>
+    <div>内容2    </div>
+    <div>内容3    </div>
+</div>
+
+<script>
+    //方法一：自定义属性
+   /* !(function changeTab(){
+        var tab = document.getElementById('tab');
+        var lis = tab.getElementsByTagName('li');
+        var divs = tab.getElementsByTagName('div');
+        for(var i=0;i<lis.length;i++){
+            lis[i].ziDingYi=i;
+            lis[i].onmouseover=function(){
+                for(var j=0;j<lis.length;j++){
+                    lis[j].className='';
+                    divs[j].className='';
+                }
+                this.className='active';
+                divs[this.ziDingYi].className='active';
+            }
+        }
+    })();*/
+//    changeTab();
+
+//      方法二：闭包 传i
+       !(function changeTab(){
+        var tab = document.getElementById('tab');
+        var lis = tab.getElementsByTagName('li');
+        var divs = tab.getElementsByTagName('div');
+        for(var i=0;i<lis.length;i++){
+            (function(b){
+                lis[b].onmouseover=function(){
+                    for(var j=0;j<lis.length;j++){
+                        lis[j].className='';
+                        divs[j].className='';
+                    }
+                    lis[b].className='active';
+                    divs[b].className='active';
+                }
+            })(i);
+        }
+    })();
+//    方法三：用js创建一切内容标签~~针对选项卡而言不好，对轮播而言很好，因为选项卡中的内容太多了，文字、新闻、图片等等都需要在html中写。而轮播图只是图而已！！只实现框架的方式：
+
+</script>
+</body>
+</html>

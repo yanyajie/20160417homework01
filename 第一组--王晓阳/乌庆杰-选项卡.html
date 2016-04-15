@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>选项卡</title>
+    <style type="text/css">
+        body, div, ul, li {
+            margin: 0;
+            padding: 0;
+            font-size: 16px;
+        }
+
+        ul, li {
+            list-style: none;
+        }
+
+        #tab {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            margin-top: -210px;
+            margin-left: -260px;
+            border: 1px solid #32ff3b;
+            border-radius: 5px;
+            padding: 10px;
+            width: 500px;
+            height: 400px;
+        }
+
+        #tab ul li {
+            display: inline-block;
+            margin-right: 10px;
+            width: 100px;
+            height: 30px;
+            line-height: 30px;
+            text-align: center;
+            background: #fffbae;
+        }
+
+        #tab div {
+            display: none;
+            width: 400px;
+            height: 300px;
+            line-height: 200px;
+            text-align: center;
+            background: #fffbae;
+        }
+
+        #tab ul li.on {
+            background: #32ff3b;
+        }
+
+        #tab div.on {
+            display: block;
+            background: #32ff3b;
+        }
+    </style>
+</head>
+<body>
+<div id="tab">
+    <ul>
+        <li class="on">北京</li>
+        <li>上海</li>
+        <li>广州</li>
+    </ul>
+    <div class="on">北京内容</div>
+    <div>上海内容</div>
+    <div>广州内容</div>
+</div>
+
+<script>
+    var oTab = document.getElementById('tab');
+    var oLis = oTab.getElementsByTagName('li');
+    var oDivs = oTab.getElementsByTagName('div');
+    for (var i = 0; i < oLis.length; i++) {
+        ~function (f) {
+            oLis[i].onmouseover = function () {
+                for (var j = 0; j < oLis.length; j++) {
+                    oLis[j].className = "";
+                    oDivs[j].className = "";
+                }
+                this.className = "on";
+                oDivs[f].className = "on";
+            }
+        }(i);
+    }
+</script>
+</body>
+</html>

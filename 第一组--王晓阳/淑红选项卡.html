@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        ul,li{
+            list-style: none;
+        }
+        #tab{
+            margin: 20px auto;
+            width: 500px;
+        }
+        #tab ul{
+            position: relative;
+            top: 1px;
+            overflow: hidden;
+        }
+        #tab ul li{
+            float: left;
+            width: 100px;
+            text-align: center;
+            height: 30px;
+            line-height: 30px;
+            margin-right: 10px;
+            border: 1px solid red;
+            cursor: pointer;
+        }
+        #tab ul li.select{
+            background-color: greenyellow;
+            border-bottom: 1px solid greenyellow;
+        }
+        #tab div{
+            display: none;
+            height: 300px;
+            text-align: center;
+            line-height: 300px;
+            font-size: 36px;
+        }
+        #tab div.select{
+            display: block;
+            background-color: greenyellow;
+        }
+    </style>
+</head>
+<body>
+<div id="tab">
+    <ul>
+        <li class="select">一</li>
+        <li>二</li>
+        <li>三</li>
+    </ul>
+    <div class="select">11</div>
+    <div>22</div>
+    <div>33</div>
+</div>
+<script>
+    (function(){
+        var oTab=document.getElementById("tab");
+        var oLis=oTab.getElementsByTagName("li");
+        var oDivs=oTab.getElementsByTagName("div");
+
+        for(var i=0;i<oLis.length;i++){
+            !function(n){
+                oLis[i].onclick=function(){
+                    for(var j=0;j<oLis.length;j++){
+                        oLis[j].className="";
+                        oDivs[j].className="";
+                    };
+                    oLis[n].className="select";
+                    oDivs[n].className="select";
+                };
+            }(i);
+        };
+    })();
+</script>
+</body>
+</html>
