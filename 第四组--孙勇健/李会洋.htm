@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>选项卡</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        #tab {
+            margin: 20px auto;
+            width: 500px;
+            border: 1px solid #ccc;
+        }
+        #tab li{
+            display: inline-block;
+            position: relative;
+            z-index: 1;
+            width: 100px;
+            height: 30px;
+            line-height: 30px;
+            text-align: center;
+            border: 1px solid #00ff00;
+            font-size: 16px;
+            font-weight: 800;
+        }
+        #tab li.active{
+            background: #0cc65b;
+        }
+        #tab div{
+            display: none;
+            width: 500px;
+            height: 100px;
+            border: 1px solid #0071bb;
+            margin-top:-1px ;
+        }
+        #tab div.active {
+            display: block;
+        }
+    </style>
+</head>
+<body id="tab">
+<ul>
+    <li class="active">新闻</li>
+    <li>图片</li>
+    <li>军事</li>
+</ul>
+<div class="active">新闻内容</div>
+<div>图片内容</div>
+<div>军事内容</div>
+
+<script>
+    var otab=document.getElementById("tab");
+    var olis=otab.getElementsByTagName("li");
+    var odivs=otab.getElementsByTagName("div");
+
+    function tab(n){
+        for(var i=0;i<olis.length;i++){
+
+            olis[i].className="";
+            odivs[i].className ="";
+        }
+        olis[n].className ="active";
+        odivs[n].className ="active";
+
+    }
+    for(var i=0;i<olis.length;i++){
+   ~function (a){
+       olis[a].onclick =function (){
+           tab(a)
+        }
+       }(i)
+   }
+
+
+</script>
+</body>
+</html>

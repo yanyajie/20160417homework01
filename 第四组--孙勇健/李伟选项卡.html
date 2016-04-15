@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>选项卡</title>
+</head>
+<style>
+    body, div, ul, li {
+        margin: 0;
+        padding: 0;
+    }
+
+    #box1 {
+        width: 600px;
+        margin: 50px auto;
+    }
+
+    #box1 ul {
+        position: relative;
+        top: 1px;
+    }
+
+    ul li {
+        list-style: none;
+        float: left;
+        width: 100px;
+        text-align: center;
+        border: 1px solid #cccccc;
+        cursor: pointer;
+    }
+
+    ul .select1 {
+        background-color: red;
+    }
+
+    #box1 div {
+        display: none;
+        clear: both;
+        width: 500px;
+        height: 250px;
+        border: 1px solid #cccccc;
+        line-height: 250px;
+        text-align: center;
+    }
+
+    #box1 .select2 {
+        display: block;
+    }
+
+</style>
+<body>
+<div id="box1">
+    <ul>
+        <li class="select1">11111</li>
+        <li>22222</li>
+        <li>33333</li>
+    </ul>
+    <div class="select2">11111</div>
+    <div>22222</div>
+    <div>33333</div>
+</div>
+</body>
+</html>
+
+<script>
+    var ys1 = document.getElementById('box1');
+    var ys2 = ys1.getElementsByTagName('li');
+    var ys3 = ys1.getElementsByTagName('div');
+
+    function tabchange(xz) {
+        for (var i = 0; i < ys2.length; i++) {
+            ys2[i].className = '';
+            ys3[i].className = '';
+        }
+        ys2[xz].className = 'select1';
+        ys3[xz].className = 'select2';
+    }
+    for (var i = 0; i < ys2.length; i++) {
+        +function (xxx) {
+            ys2[xxx].onmouseover = function () {
+                tabchange(xxx);
+            }
+        }(i)
+    }
+</script>

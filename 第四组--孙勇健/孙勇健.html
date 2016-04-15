@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        body,div,ul,li{
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+        #box{
+            margin: 50px auto;
+            width: 400px;
+            border: 1px solid #67b168;
+        }
+        #box ul li{
+            margin-left: 23px;
+            border: 1px solid saddlebrown;
+            border-radius: 3px;
+            float: left;
+            width: 50px;
+            height: 30px;
+            text-align: center;
+            line-height: 30px;
+            background: aquamarine;
+            color: #cccccc;
+            cursor: pointer;
+        }
+        ul li.on{
+            background: #0022ee;
+        }
+        #box div{
+            clear: both;
+            display: none;
+            width: 400px;
+            height: 300px;
+        }
+        #box div.on{
+            display: block;
+            width: 400px;
+            height: 300px;
+        }
+
+    </style>
+</head>
+<body>
+<div id="box">
+    <ul>
+        <li class="on">新闻</li>
+        <li>体育</li>
+        <li>科技</li>
+        <li>娱乐</li>
+        <li>军事</li>
+    </ul>
+    <div class="on"><img src="" alt="">新闻</div>
+    <div>体育</div>
+    <div>科技</div>
+    <div>娱乐</div>
+    <div>军事</div>
+</div>
+<script>
+    //var box=document.getElementById("box")
+    var lis=document.getElementById("box").getElementsByTagName("li");
+    var divs=document.getElementById("box").getElementsByTagName("div");
+
+
+//    function tab(index){
+//        for(var i=0;i<lis.length;i++){
+//            lis[i].className="";
+//            divs[i].className="";
+//        }
+//        lis[index].className="on";
+//        divs[index].className="on";
+//    }
+    for(var i=0;i<lis.length;i++){
+    (function  (){
+        lis[i].onclick=function (i){
+
+                lis[i].className="";
+                divs[i].className="";
+            }
+            lis[i].className="on";
+            divs[i].className="on";}
+        }
+    (i);
+    }
+    // 1.
+    //        for(var i=0;i<lis.length;i++){
+    //            (function (i){
+    //                lis[i].onclick=function(){
+    //                    tab(i);
+    //                }
+    //            })(i);
+    //        }
+
+    //2.
+//    for(var i=0;i<lis.length;i++){
+//        lis[i].onclick=(function(){
+//            var x=i;
+//            return function(){
+//                tab(x);
+//            }
+//        })();
+//    }
+
+</script>
+</body>
+</html>

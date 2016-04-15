@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style type="text/css">
+        body,div,ul,li{
+            margin: 0;
+            padding: 0;
+        }
+        ul,li{
+            list-style: none;
+        }
+        #div1{
+            margin: 30px auto;
+            width: 500px;
+            height: 500px;
+            /*border: 1px solid #cccccc;*/
+        }
+        #div1 ul{
+           position: relative;
+            top: 1px;
+        }
+        #div1 ul li{
+            float: left;
+            margin-right: 10px;
+            width: 100px;
+            height: 30px;
+            line-height: 30px;
+            text-align: center;
+            border: 1px solid #cccccc;
+        }
+        #div1 div{
+            display: none;
+            clear: both;
+            width: 400px;
+            height: 100px;
+            border: 1px solid #cccccc;
+            line-height: 100px;
+            text-align: center;
+        }
+        #div1 ul li.on{
+            background: -webkit-linear-gradient(top left,greenyellow,rosybrown,peachpuff);
+        }
+        #div1 div.on{
+            display: block;
+        }
+    </style>
+</head>
+<body>
+<div id="div1">
+    <ul>
+        <li class="on">视频</li>
+        <li>综艺</li>
+        <li>秒拍</li>
+    </ul>
+    <div class="on">视频内容</div>
+    <div>综艺内容</div>
+    <div>秒拍内容</div>
+</div>
+<script type="text/javascript">
+    var oDiv=document.getElementById("div1");
+    var oLis=oDiv.getElementsByTagName("li");
+    var oDivs=oDiv.getElementsByTagName("div");
+   /* for(var i=0;i<oLis.length;i++){
+          oLis[i].zheFeng=i;
+        oLis[i].onmouseover=function(){
+            for(var j=0;j<oLis.length;j++){
+                oLis[j].className="";
+                oDivs[j].className="";
+            }
+            this.className="on";
+            oDivs[this.zheFeng].className="on";
+        }
+    }*/
+/* for(var i=0;i<oLis.length;i++){
+        oLis[i].onmouseover=(function(i){
+            return function(){
+                for(var j=0;j<oLis.length;j++){
+                oLis[j].className="";
+                oDivs[j].className="";
+            }
+                this.className="on";
+                oDivs[i].className="on";
+            }
+        })(i);
+        oLis[i].onmouseover();
+    }*/
+  for(var i=0;i<oLis.length;i++){
+     ~(function(i){
+         oLis[i].onmouseover=function(){
+             for(var j=0;j<oLis.length;j++){
+                 oLis[j].className="";
+                 oDivs[j].className="";
+             }
+             this.className="on";
+             oDivs[i].className="on";
+         }
+     })(i);
+     }
+
+</script>
+</body>
+</html>
