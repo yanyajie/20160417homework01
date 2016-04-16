@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>选项卡</title>
+    <style type="text/css">
+        *{margin: 0;padding: 0;}
+        ul,li{list-style: none;}
+        #tal{
+            margin: 50px auto;
+            width: 500px;
+
+        }
+        li{
+            float: left;
+            width:100px;
+            height:30px;
+            line-height: 30px;
+            text-align: center;
+            border: 1px solid #000000;
+            margin-right: 50px;
+        }
+        #tal div{
+            clear: both;
+            height:300px;
+            line-height: 300px;
+            border: 1px solid #000000;
+            text-align: center;
+            display: none;
+        }
+        ul .select{
+            background-color: cyan;
+        }
+        #tal .select{
+            display: block;
+        }
+
+    </style>
+
+</head>
+<body>
+<div id="tal">
+    <ul >
+        <li class="select">选项卡一</li>
+        <li>选项卡二</li>
+        <li>选项卡三</li>
+    </ul>
+    <div class="select">选项卡内容一</div>
+    <div>选项卡内容二</div>
+    <div>选项卡内容三</div>
+</div>
+<script type="text/javascript">
+    var oTal=document.getElementById("tal");
+    var oLis=oTal.getElementsByTagName("li");
+    var oDivs=oTal.getElementsByTagName("div");
+    function tachang(n){
+        for(var i=0;i<oLis.length;i++){
+            oLis[i].className="";
+            oDivs[i].className="";
+        }
+        oLis[n].className="select";
+        oDivs[n].className="select";
+    }
+    for(var i=0;i<oLis.length;i++){
+        +function(i){
+            oLis[i].onmouseover=function(){
+                tachang(i)
+            };
+        }(i)
+    }
+</script>
+
+
+</body>
+</html>

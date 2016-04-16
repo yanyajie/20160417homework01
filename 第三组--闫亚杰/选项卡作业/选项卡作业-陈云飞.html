@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>选项卡闭包</title>
+
+    <style>
+        *{margin: 0;padding: 0}
+        ul,li{list-style: none}
+        #tab{width: 500px;height: 300px;position: absolute;left: 50%；top:50%;margin: 150px 0 0 250px;border: 1px solid red}
+        ul li{display: inline-block;width: 60px;text-align: center;line-height: 30px;height:30px;border: 1px solid yellow;-webkit-user-select: none;cursor: pointer}
+        #tab div{border:1px solid #dddddd;width: 500px;height:100px;margin-top: -1px;text-align:center;line-height:100px;display: none;position: relative;z-index: 1;}
+        ul li.select{background-color: coral;color: #ff6 ;}
+        #tab div.active{display: block}
+
+    </style>
+
+
+
+</head>
+<body>
+<div id="tab">
+    <ul>
+        <li class="select">新闻</li>
+        <li>军事</li>
+        <li>环球</li>
+    </ul>
+    <div class="active">新闻内容</div>
+    <div>军事内容</div>
+    <div>环球内容</div>
+</div>
+
+<script>
+    var oTab = document.getElementById("tab");
+    var divs = oTab.getElementsByTagName("div");
+    var lis = oTab.getElementsByTagName("li");
+
+  for (var i = 0; i < lis.length; i++){
+        var n = i;
+     // lis[i].id = i;
+    +function (n) {
+        lis[i].onclick = function (){
+            //lis[i].id = i;
+            // fn(this.id);
+          for (var i = 0; i < lis.length; i++) {
+                lis[i].className = "";
+                divs[i].className = "";
+            }
+
+            lis[n].className = "select";
+            divs[n].className = "active";
+
+        }
+    }(i);
+   }
+
+
+
+
+
+</script>
+
+</body>
+</html>

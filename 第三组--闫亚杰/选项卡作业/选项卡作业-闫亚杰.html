@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style type="text/css">
+        body, div, ul, li {
+            margin: 0px;
+            padding: 0px;
+            /*font-family: ;*/
+            font-size: 14px;
+        }
+
+        ul, li {
+            list-style: none;
+        }
+
+        #tab {
+            margin: 10px auto;
+            width: 500px;
+
+        }
+
+        #tab ul {
+
+        }
+
+        #tab ul li {
+            float: left;
+            margin-right: 10px;
+            width: 100px;
+            height: 30px;
+            line-height: 30px;
+            text-align: center;
+            border: 1px solid #dddddd;
+            cursor: pointer;
+        }
+
+        #tab ul .select {
+            background: linear-gradient(to left, #cc0000, #00b3ee, #ffff00);
+        }
+
+        #tab div {
+            clear: both;
+            display: none;
+            height: 100px;
+            line-height: 100px;
+            text-align: center;
+            border: 1px solid #dddddd;
+        }
+
+        #tab div.select {
+            display: block;
+        }
+    </style>
+</head>
+<body>
+<div id="tab">
+    <ul>
+        <li class="select">视频</li>
+        <li>综艺</li>
+        <li>秒拍</li>
+    </ul>
+    <div class="select">视频内容</div>
+    <div>综艺内容</div>
+    <div>秒拍内容</div>
+</div>
+<script>
+    var oTab = document.getElementById("tab");
+    var oLis = oTab.getElementsByTagName("li");
+    var oDivs = oTab.getElementsByTagName("div");
+    for (var i = 0; i < oLis.length; i++) {
+        (function (i) {
+            oLis[i]["onclick"] = function () {
+                for (var j = 0; j < oLis.length; j++) {
+                    oLis[j].className = "";
+                    oDivs[j].className = "";
+                }
+                this.className = "select";
+                oDivs[i].className = "select";
+            }
+        })(i)
+    }
+</script>
+</body>
+</html>
